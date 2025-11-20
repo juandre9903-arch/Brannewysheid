@@ -1,0 +1,444 @@
+/* ================================
+   GLOBAL RESET & BASE
+================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Fade animation */
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================
+   NAVBAR
+================================ */
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  background: #111;
+  padding: 1rem;
+  border-bottom: 1px solid #333;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar button {
+  background: transparent;
+  border: none;
+  color: #ddd;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  transition: 0.2s;
+}
+
+.navbar button:hover {
+  color: gold;
+}
+
+.navbar button.active {
+  color: gold;
+  border-bottom: 2px solid gold;
+}
+
+/* ================================
+   CONTENT WRAPPER
+================================ */
+
+.content {
+  padding: 2rem 1rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ================================
+   HOME / ABOUT PAGES
+================================ */
+
+.home,
+.about {
+  text-align: center;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.home h1 {
+  font-size: 2.1rem;
+  letter-spacing: 0.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.home p {
+  opacity: 0.9;
+  margin-bottom: 0.25rem;
+}
+
+/* ================================
+   SHOP SECTION & FILTER TABS
+================================ */
+
+.shop-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.shop-filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.shop-tab {
+  background: #111;
+  color: #ccc;
+  border: 1px solid #333;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 0.8rem;
+}
+
+.shop-tab:hover {
+  color: gold;
+  border-color: gold;
+}
+
+.shop-tab.active {
+  background: gold;
+  color: black;
+  border-color: gold;
+  font-weight: 600;
+}
+
+/* ================================
+   PRODUCT GRID & CARDS
+================================ */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.4rem;
+}
+
+.card {
+  background: #0d0d0d;
+  border: 2px solid gold;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.15);
+  transition: 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.25);
+}
+
+/* ================================
+   PRODUCT IMAGE (FULL IMAGE – BIGGER)
+================================ */
+
+.card-image {
+  width: 100%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem;
+  border-bottom: 2px solid gold;
+}
+
+/* FULL IMAGE, NO CROPPING — BIGGER SIZE */
+.card-image img {
+  width: 100%;
+  height: auto;
+  max-height: 190px;   /* ← bigger desktop size */
+  object-fit: contain;
+  display: block;
+}
+
+/* MOBILE — slightly bigger now */
+@media (max-width: 600px) {
+  .card-image img {
+    max-height: 140px;
+  }
+}
+
+/* SMALL TABLETS */
+@media (min-width: 600px) and (max-width: 900px) {
+  .card-image img {
+    max-height: 160px;
+  }
+}
+
+/* LARGE DESKTOP */
+@media (min-width: 1200px) {
+  .card-image img {
+    max-height: 210px;
+  }
+}
+
+/* ================================
+   CARD BODY
+================================ */
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-body h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+}
+
+.category {
+  font-size: 0.8rem;
+  color: #bbb;
+  text-transform: uppercase;
+}
+
+.price {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: gold;
+}
+
+/* ================================
+   COLOUR SELECTOR (VARIANTS)
+================================ */
+
+.color-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  margin: 0.6rem 0;
+  flex-wrap: wrap;
+}
+
+.color-dot {
+  background: #222;
+  color: #ddd;
+  border: 1px solid #444;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  text-transform: capitalize;
+}
+
+.color-dot.active {
+  background: gold;
+  color: black;
+  border-color: gold;
+  font-weight: 600;
+}
+
+.color-nav {
+  background: transparent;
+  border: none;
+  color: gold;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* ================================
+   SIZE SELECTOR
+================================ */
+
+.size-row {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.size-pill {
+  background: #222;
+  color: #ccc;
+  border: 1px solid #444;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.size-pill.active {
+  background: gold;
+  color: black;
+  border-color: gold;
+  font-weight: 600;
+}
+
+/* ================================
+   BUTTONS
+================================ */
+
+.add-btn {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 8px;
+  background: gold;
+  color: black;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.add-btn:hover {
+  background: #ffd84d;
+}
+
+.checkout-btn {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.8rem;
+  background: gold;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.checkout-btn:hover {
+  background: #ffd84d;
+}
+
+.remove-btn {
+  color: #ff5c5c;
+  border-color: #ff5c5c;
+}
+
+/* ================================
+   CART
+================================ */
+
+.cart-list {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.cart-item {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #333;
+}
+
+.cart-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.cart-name {
+  font-weight: 600;
+}
+
+.cart-price {
+  color: gold;
+}
+
+.cart-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.cart-actions button {
+  padding: 0.25rem 0.7rem;
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+.cart-actions button:hover {
+  background: #333;
+}
+
+.cart-summary {
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid #333;
+  font-size: 0.9rem;
+}
+
+/* ================================
+   WHATSAPP FLOAT BUTTON
+================================ */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  padding: 0.8rem 1.2rem;
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 20;
+  font-size: 0.9rem;
+}
+
+.whatsapp-float:hover {
+  background: #1ebe5d;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid #222;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+
